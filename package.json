@@ -1,0 +1,24 @@
+{
+  "devDependencies": {
+    "css-loader": "^4.3.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mini-css-extract-plugin": "^0.11.2",
+    "mocha": "^7.2.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "build": "webpack --progress --colors --mode=development --config webpack.config.cjs",
+    "watch": "webpack --progress --colors --profile --watch --mode=development --config webpack.config.cjs",
+    "live": "webpack --progress --watch --mode=development --config webpack.config.cjs",
+    "test": "mocha --recursive ./tests/**/*.spec.js"
+  },
+  "type": "module"
+}
