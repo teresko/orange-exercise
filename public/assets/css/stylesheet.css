@@ -1,0 +1,127 @@
+html {
+    background: #242424;
+    font-family: sans;
+}
+
+.foundation {
+    display: grid;
+    grid-template-columns: 36rem 20rem;
+    grid-column-gap: 2rem;
+    column-gap: 2rem;
+    padding: 4rem;
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 32rem 4rem;
+    width: 36rem;
+    position: relative;
+}
+
+.log {
+    position: absolute;
+    top: .3rem;
+    right: 4.5rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.display {
+    background: #2b2b2b;
+    color: #fdfdfd;
+    outline: none; /* chrome forces white border otherwise */
+    border: 1px solid #414141;
+    font-size: 1.5rem;
+    height: 5rem;
+    text-align: right;
+    padding: 0 .5rem;
+    transition: background-color .2s, border-color .2s;
+}
+
+.display:focus {
+    border: 1px solid #4e97d2;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: 15rem 5rem;
+}
+
+.digits {
+    display: grid;
+    grid-template-columns: 5rem 5rem 5rem;
+    grid-template-rows: 3rem 3rem 3rem 3rem;
+}
+
+.operations {
+    display: grid;
+    grid-template-columns: 5rem;
+    grid-template-rows: 3rem 3rem 3rem 3rem;
+}
+
+.key {
+    background: #2b2b2b;
+    border: 1px solid #414141;
+    color: #fdfdfd;
+    font-size: 1.5rem;
+    transition: background-color .2s, border-color .2s;
+}
+
+.key:hover {
+    background: rgba(88, 88, 88, 0.75);
+}
+
+.key.custom {
+    grid-column: 1 / 3;
+}
+
+.operations .key {
+    background: #dd8c00;
+    border: 1px solid #daa13e;
+}
+
+.operations .key:hover {
+    background: rgba(220, 140, 0, 0.7);
+}
+
+.memory {
+    min-height: 17rem;
+}
+
+.memory .slot {
+    background: rgba(41, 142, 199, .8);
+    border: 1px solid #74b0d2;
+    color: #fff;
+    padding: .2rem .5rem;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s;
+}
+
+.memory .slot:hover {
+    background: rgba(41, 142, 199, 1);
+}
+
+.memory .slot.empty {
+    background: #262626;
+    border: 1px solid #333;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    color: #484848;
+    height: 3rem;
+    text-align: center;
+    cursor: default;
+}
+
+.memory .empty::before {
+    content: "empty slot";
+}
+
+.equation {
+    text-align: right;
+    color: #bed4e0;
+}
+
+.result {
+    font-size: 1.5rem;
+}
