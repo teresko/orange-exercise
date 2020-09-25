@@ -1,0 +1,12 @@
+
+
+.key
+  @extend %animated
+  @extend %key
+
+  &.operation
+    background: $color-secondary
+    border: 1px solid lighten($color-secondary, 10%)
+
+    &:hover
+      background: transparentize($color-secondary, 0.3)

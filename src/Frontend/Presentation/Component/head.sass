@@ -1,0 +1,23 @@
+
+.head
+  position: relative
+
+  .log
+    position: absolute
+    top: .3rem
+    right: 4.5rem
+    color: $color-text-secondary
+    cursor: pointer
+
+  .display
+    @extend %animated
+    background: $color-primary
+    color: $color-text-primary
+    border: 1px solid $color-border-primary
+    height: 5rem
+    padding: 0 .5rem
+    // chrome forces white border otherwise
+    outline: none
+
+    &:focus
+      border: 1px solid $color-accent
