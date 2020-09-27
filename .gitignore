@@ -2,3 +2,5 @@ vendor
 node_modules
 public/assets/js/*bundle.js
 coverage
+report
+.phpunit.result.cache
