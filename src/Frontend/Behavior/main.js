@@ -33,7 +33,7 @@ calculator.node.addEventListener('submit', function (event) {
 
   const params = {
     method: 'POST',
-    body: new FormData(this)
+    body: new FormData(event.target)
   };
 
   fetch('/api/equations', params)
@@ -42,9 +42,13 @@ calculator.node.addEventListener('submit', function (event) {
 }, false);
 
 calculator.node.addEventListener('click', function (event) {
-  const slot = event.target;
-  if (slot.classList.contains('log')) {
+  const element = event.target;
+  if (element.classList.contains('log')) {
     juncture.swap();
+  }
+
+  if (element.classList.contains('key')) {
+    juncture.write(element.value);
   }
 }, false);
 
