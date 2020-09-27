@@ -28,6 +28,12 @@ class Equation implements HasId, Computable
 
     private function normalize(string $expression)
     {
+        $expression = strtr($expression, [
+            '−' => '-',
+            '×' => '*',
+            '÷' => '/',
+        ]);
+
         return preg_replace('/[\s\']+/', '', $expression);;
     }
 
@@ -59,6 +65,22 @@ class Equation implements HasId, Computable
     public function getExpression(): string
     {
         return $this->expression;
+    }
+
+
+    public function getFormatedExpression(): string
+    {
+        $expression = $this->getExpression();
+
+        preg_match_all('#([+-/*])|(\d+)#', $expression, $matches);
+
+        $expression = implode(' ', $matches[0]);
+
+        return strtr($expression, [
+            '-' => '−',
+            '*' => '×',
+            '/' => '÷',
+        ]);
     }
 
 
