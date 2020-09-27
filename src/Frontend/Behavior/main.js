@@ -25,7 +25,7 @@ const handle = function (data) {
 };
 
 const restore = function (data) {
-  data.items.forEach(memory.add.bind(memory));
+  data.items.slice().reverse().forEach(memory.add.bind(memory));
 }
 
 calculator.node.addEventListener('submit', function (event) {

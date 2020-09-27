@@ -20,7 +20,9 @@ class EquationCollection
         $sql = "SELECT equationId AS id,
                        expression,
                        result
-                  FROM Equations";
+                  FROM Equations
+              ORDER BY equationId DESC
+                 LIMIT 5";
 
         $statement = $this->connection->query($sql);
         $statement->setFetchMode(PDO::FETCH_ASSOC);
