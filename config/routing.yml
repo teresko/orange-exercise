@@ -1,15 +1,15 @@
 # history
 history:
-    path: /api/history
+    path: /api/equations
     defaults:
-        resource: Application\Controller\History
+        resource: Application\Controller\Equations
         action: collection
-    methods: [GET, POST]
+    methods: [GET]
 
 
 calc:
-    path: /api/equation
+    path: /api/equations
     defaults:
-        resource: Application\Controller\Equation
+        resource: Application\Controller\Equations
         action: resource
     methods: [POST]

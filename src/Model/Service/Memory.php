@@ -6,14 +6,14 @@ use Model\Entity;
 
 class Memory
 {
-    public function remember(Entity\Expression $expression)
+    public function remember(Entity\Equation $equation)
     {
 
     }
 
 
-    public function recall(): Entity\ExpressionCollection
+    public function recall(): Entity\EquationCollection
     {
-        return new Entity\ExpressionCollection;
+        return new Entity\EquationCollection;
     }
 }

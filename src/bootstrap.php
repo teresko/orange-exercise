@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection;
 use Symfony\Component\HttpFoundation\{Request, JsonResponse};
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/functions.php';
 
 $request = Request::createFromGlobals();
 $locator = new FileLocator(__DIR__ . '/../config');
@@ -32,6 +33,7 @@ try {
     $parameters = $matcher->match($request->getPathInfo());
 } catch (Routing\Exception\ResourceNotFoundException $e) {
     // handle unsupported API endpoint
+    var_dump($e); exit;
 }
 
 // dumping the routed values with other request parameters .. because lazy

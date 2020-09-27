@@ -2,7 +2,7 @@
 
 namespace Model\Entity;
 
-class Expression
+class Equation
 {
-    
+
 }

@@ -6,13 +6,13 @@ use Model\Entity;
 
 class Calculator
 {
-    public function produceExpression(string $query): Entity\Expression
+    public function produceEquation(string $query): Entity\Equation
     {
-        return new EntityExpression;
+        return new Entity\Equation;
     }
 
 
-    public function evaluate(Entity\Expression $expression)
+    public function evaluate(Entity\Equation $equation)
     {
 
     }
