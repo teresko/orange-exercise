@@ -45,12 +45,13 @@ try {
     $resource = $container->get($request->get('resource'));
     $command = $request->getMethod() . $request->get('action');
 
-    $response = $resource->{$command}($request);
-} catch (Exception $e) {
-    $response = new JsonResponse([
+    $data = $resource->{$command}($request) + ['status' => 'ok'];
+} catch (Exception $exception) {
+    $data = [
         'status' => 'error',
-        'message' => $e->getMessage(),
-    ]);
+        'message' => $exception->getMessage(),
+    ];
 }
 
+$response = new JsonResponse($data);
 $response->send();

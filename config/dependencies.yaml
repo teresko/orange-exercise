@@ -1,3 +1,4 @@
 
 imports:
+    - { resource: dependencies/services.yaml }
     - { resource: dependencies/controllers.yaml }
