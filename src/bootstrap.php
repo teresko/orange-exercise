@@ -14,6 +14,7 @@ $locator = new FileLocator(__DIR__ . '/../config');
 
 // configuration for dependency injection container
 $container = new DependencyInjection\ContainerBuilder;
+$container->setParameter('path.root', __DIR__ . '/..');
 
 $loader = new DependencyInjection\Loader\YamlFileLoader($container, $locator);
 $loader->load('dependencies.yaml');

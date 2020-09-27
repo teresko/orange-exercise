@@ -1,4 +1,18 @@
 
 imports:
+    - { resource: dependencies/mappers.yaml }
     - { resource: dependencies/services.yaml }
     - { resource: dependencies/controllers.yaml }
+
+services:
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    PDO:
+        class: PDO
+        arguments: ['sqlite:%path.root%/db/db.sqlite']
+        calls:
+            - [setAttribute, [!php/const PDO::ATTR_ERRMODE, !php/const PDO::ERRMODE_EXCEPTION]]
