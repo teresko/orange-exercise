@@ -13,3 +13,13 @@ calc:
         resource: Application\Controller\Equations
         action: resource
     methods: [POST]
+
+
+equation:
+    path: /api/equations/{id}
+    requirements:
+        id: "[0-9]+"
+    defaults:
+        resource: Application\Controller\Equations
+        action: resource
+    methods: [GET]
