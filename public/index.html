@@ -7,12 +7,12 @@
     </head>
     <body>
         <main class="foundation">
-            <form class="calc">
-                <div class="head">
-                    <input type="text" class="display" />
+            <div class="calc">
+                <form method="post" action="" class="head" data-component="calculator">
+                    <input type="text" name="query" class="display" data-component="input" />
                     <input type="submit" class="key" value="=" />
-                    <span class="log">415 + 4 &times; 452</span>
-                </div>
+                    <span class="log" data-component="log">415 + 4 &times; 452</span>
+                </form>
                 <div class="keypad">
                     <div class="digits">
                         <button class="key" value="9">9</button>
@@ -34,23 +34,23 @@
                         <button class="operation key" value="+">+</button>
                     </div>
                 </div>
-            </form>
-            <div class="memory">
-                <div class="slot">
-                    <div class="equation">415 + 4 &times; 452</div>
-                    <div class="result">5415</div>
-                </div>
-                <div class="slot">
-                    <div class="equation">415 + 4 &times; 452</div>
-                    <div class="result">5415</div>
-                </div>
-                <div class="slot">
-                    <div class="equation">415 + 4 &times; 452</div>
-                    <div class="result">5415</div>
-                </div>
+            </div>
+            <div class="memory" data-component="memory">
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
                 <div class="slot empty"></div>
                 <div class="slot empty"></div>
             </div>
         </main>
+
+        <template id="snippet">
+            <div class="slot">
+                <div class="equation" data-expression></div>
+                <div class="result" data-result></div>
+            </div>
+        </template>
+
+        <script src="/assets/app.js"></script>
     </body>
 </html>
