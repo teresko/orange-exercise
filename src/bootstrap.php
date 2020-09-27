@@ -8,8 +8,16 @@ use Symfony\Component\HttpFoundation\{Request, JsonResponse};
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/functions.php';
 
+$environment = 'development';
+
+// choosing which set of configuration-set to use
+// basically, the "profiles" 
+if (getenv('DEPLOYMENY')) {
+    $environment = getenv('DEPLOYMENY');
+}
+
 $request = Request::createFromGlobals();
-$locator = new FileLocator(__DIR__ . '/../config');
+$locator = new FileLocator(__DIR__ . "/../config/{$environment}");
 
 
 // configuration for dependency injection container
