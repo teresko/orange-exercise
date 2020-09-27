@@ -2,13 +2,39 @@
 
 namespace Model\Entity;
 
-use Model\Contract\HasId;
+use Model\Contract\{HasId, Computable};
+use Model\Exception\NotMathematicalExpression;
 
-class Equation implements HasId
+class Equation implements HasId, Computable
 {
-    private $id = 7;
-    private $expression = '2 + 3 * 4';
-    private $result = 14;
+    private $id;
+    private $expression;
+    private $result;
+
+
+    public function __construct(string $expression)
+    {
+        $expression = $this->normalize($expression);
+
+        if ($this->isValid($expression) === false) {
+            throw new NotMathematicalExpression;
+        }
+
+        $this->expression = $expression;
+    }
+
+
+    private function isValid(string $expression): bool
+    {
+        return preg_match('#^[+-]?\d+(([+/*-]|[/*][+-])\d+)+$#', $expression, $matches);
+    }
+
+
+    private function normalize(string $expression)
+    {
+        return preg_replace('/[\s\']+/', '', $expression);;
+    }
+
 
     public function getId()
     {
@@ -16,14 +42,22 @@ class Equation implements HasId
     }
 
 
-    public function getExpression(): ?string
+    public function getExpression(): string
     {
         return $this->expression;
     }
 
 
+    // PHP 8 union types would be really nice here
+    public function setResult($result)
+    {
+        $this->result = $result;
+    }
+
+
     public function getResult()
     {
-        return $this->result;
+        // sneaky to case anything to either int or float
+        return $this->result + 0;
     }
 }
