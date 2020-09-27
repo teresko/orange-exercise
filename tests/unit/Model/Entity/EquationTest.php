@@ -66,6 +66,7 @@ class EquationTest extends TestCase
             ['3+a'],
             ['  *3-1  '],
             ['1234*23-244-'],
+            ['4//-2'],
         ];
     }
 
