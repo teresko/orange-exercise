@@ -9,6 +9,6 @@ class EquationCollection extends Collection
 {
     protected function buildEntity(): HasId
     {
-        return Equation;
+        return new Equation;
     }
 }

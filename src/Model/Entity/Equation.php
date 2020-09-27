@@ -12,15 +12,11 @@ class Equation implements HasId, Computable
     private $result;
 
 
-    public function __construct(string $expression)
+    public function __construct(string $expression = null)
     {
-        $expression = $this->normalize($expression);
-
-        if ($this->isValid($expression) === false) {
-            throw new NotMathematicalExpression;
+        if ($expression !== null) {
+            $this->setExpression($expression);
         }
-
-        $this->expression = $expression;
     }
 
 
@@ -36,9 +32,27 @@ class Equation implements HasId, Computable
     }
 
 
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+
     public function getId()
     {
         return $this->id;
+    }
+
+
+    public function setExpression(string $expression)
+    {
+        $expression = $this->normalize($expression);
+
+        if ($this->isValid($expression) === false) {
+            throw new NotMathematicalExpression;
+        }
+
+        $this->expression = $expression;
     }
 
 
