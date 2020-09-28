@@ -21,3 +21,18 @@
 
     &:focus
       border: 1px solid $color-accent
+
+  .error
+    @extend %animated
+    @extend %permeable
+    position: absolute
+    top: -1rem
+    left: -1rem
+    padding: .5rem 1rem
+    background: $color-error
+    border-radius: 0.4rem
+    border: 1px solid lighten($color-error, 20%)
+    color: $color-text-primary
+
+    &.hidden
+      opacity: 0

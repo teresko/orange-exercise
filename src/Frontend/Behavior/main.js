@@ -6,7 +6,8 @@ import Memory from './Component/Memory.js';
 
 const juncture = new Juncture(
   document.querySelector('[data-component="input"]'),
-  document.querySelector('[data-component="log"]')
+  document.querySelector('[data-component="log"]'),
+  document.querySelector('[data-component="error"]')
 );
 
 const calculator = new Calculator(
@@ -20,8 +21,12 @@ const memory = new Memory(
 );
 
 const handle = function (data) {
-  calculator.render(data);
-  memory.add(data);
+  if (data.status === 'ok') {
+    calculator.render(data);
+    memory.add(data);
+  } else {
+    juncture.error(data.message);
+  }
 };
 
 const restore = function (data) {
@@ -61,6 +66,8 @@ memory.node.addEventListener('click', function (event) {
 
   memory.populate(juncture, slot);
 }, false);
+
+juncture.input.addEventListener('focus', juncture.reset.bind(juncture), false);
 
 fetch('/api/equations')
   .then(data => data.json())

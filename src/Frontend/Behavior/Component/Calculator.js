@@ -6,10 +6,6 @@ export default class Calculator {
   }
 
   render (data) {
-    if (data.status === 'error') {
-      return;
-    }
-
     this.juncture.setInput(data.result);
     this.juncture.setLog(data.expression);
   }

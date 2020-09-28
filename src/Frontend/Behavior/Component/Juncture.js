@@ -1,8 +1,9 @@
 
 export default class Juncture {
-  constructor (input, log) {
+  constructor (input, log, message) {
     this.input = input;
     this.log = log;
+    this.message = message;
   }
 
   setInput (value) {
@@ -20,6 +21,7 @@ export default class Juncture {
   }
 
   write (fragment) {
+    this.reset();
     if (fragment === '=') {
       return;
     }
@@ -33,6 +35,15 @@ export default class Juncture {
   clear () {
     this.input.value = ''
     this.log.textContent = '';
+  }
+
+  error (content) {
+    this.message.textContent = content;
+    this.message.classList.remove('hidden');
+  }
+
+  reset () {
+    this.message.classList.add('hidden');
   }
 }
 
