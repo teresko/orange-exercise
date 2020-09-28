@@ -2,13 +2,13 @@
 
 namespace Model\Entity;
 
-use Model\Contract\HasId;
 use Component\Collection;
+use Model\Contract\HasId;
 
 class EquationCollection extends Collection
 {
     protected function buildEntity(): HasId
     {
-        return new Equation;
+        return new Equation();
     }
 }

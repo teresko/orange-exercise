@@ -2,9 +2,8 @@
 
 namespace Application\Controller;
 
-use Symfony\Component\HttpFoundation\{Request, JsonResponse};
-use Model\Service\{Calculator, Memory};
-use Component\Template;
+use Model\Service;
+use Symfony\Component\HttpFoundation\Request;
 
 class Equations
 {
@@ -12,7 +11,7 @@ class Equations
     private $memory;
 
 
-    public function __construct(Calculator $calc, Memory $memory)
+    public function __construct(Service\Calculator $calc, Service\Memory $memory)
     {
         $this->calc = $calc;
         $this->memory = $memory;

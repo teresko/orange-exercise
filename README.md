@@ -15,7 +15,7 @@ Functional requirements :
 
 - Calculator with 4 functions (add, sub, div, mul)
 - Ability to store/retrieve 5 last calculation results 
-             
+
 Non-functional requirements :
 
 - Frontend : XHTML/JS (any framework), CSS (Sass/Less)

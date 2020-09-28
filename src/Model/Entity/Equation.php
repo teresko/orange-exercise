@@ -2,10 +2,10 @@
 
 namespace Model\Entity;
 
-use Model\Contract\{HasId, Computable};
+use Model\Contract;
 use Model\Exception\NotMathematicalExpression;
 
-class Equation implements HasId, Computable
+class Equation implements Contract\HasId, Contract\Computable
 {
     private $id;
     private $expression;
@@ -34,11 +34,11 @@ class Equation implements HasId, Computable
             '÷' => '/',
         ]);
 
-        return preg_replace('/[\s\']+/', '', $expression);;
+        return preg_replace('/[\s\']+/', '', $expression);
     }
 
 
-    public function setId(int $id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -50,12 +50,12 @@ class Equation implements HasId, Computable
     }
 
 
-    public function setExpression(string $expression)
+    public function setExpression(string $expression): void
     {
         $expression = $this->normalize($expression);
 
         if ($this->isValid($expression) === false) {
-            throw new NotMathematicalExpression;
+            throw new NotMathematicalExpression();
         }
 
         $this->expression = $expression;
@@ -85,7 +85,7 @@ class Equation implements HasId, Computable
 
 
     // PHP 8 union types would be really nice here
-    public function setResult($result)
+    public function setResult($result): void
     {
         $this->result = $result;
     }

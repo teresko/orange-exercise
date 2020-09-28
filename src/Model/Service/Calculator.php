@@ -2,8 +2,8 @@
 
 namespace Model\Service;
 
-use Model\Entity;
 use Model\Contract;
+use Model\Entity;
 
 class Calculator
 {
@@ -13,7 +13,7 @@ class Calculator
     }
 
 
-    public function evaluate(Contract\Computable $equation)
+    public function evaluate(Contract\Computable $equation): void
     {
         // just in case, wrapping it in a closure
         $result = (function ($expression) {

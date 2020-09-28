@@ -5,7 +5,6 @@ namespace Model\Mapper;
 use Model\Entity;
 use Model\Exception;
 use PDO;
-use PDOException;
 
 class Equation
 {
@@ -16,7 +15,7 @@ class Equation
         $this->connection = $connection;
     }
 
-    public function store(Entity\Equation $equation)
+    public function store(Entity\Equation $equation): void
     {
         $sql = 'INSERT INTO Equations(expression, result, createdOn)
                      VALUES (:expression, :result, :timestamp)';
@@ -30,7 +29,7 @@ class Equation
         $equation->setId($this->connection->lastInsertId());
     }
 
-    public function fetch(Entity\Equation $equation)
+    public function fetch(Entity\Equation $equation): void
     {
         $sql = 'SELECT expression,
                        result
@@ -44,7 +43,7 @@ class Equation
         $data = $statement->fetch(PDO::FETCH_ASSOC);
 
         if (empty($data)) {
-            throw new Exception\EntityNotFound;
+            throw new Exception\EntityNotFound();
         }
 
         $equation->setExpression($data['expression']);

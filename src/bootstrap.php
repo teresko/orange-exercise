@@ -1,9 +1,10 @@
 <?php
 
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Routing;
 use Symfony\Component\DependencyInjection;
-use Symfony\Component\HttpFoundation\{Request, JsonResponse};
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/functions.php';
@@ -21,7 +22,7 @@ $locator = new FileLocator(__DIR__ . "/../config/{$environment}");
 
 
 // configuration for dependency injection container
-$container = new DependencyInjection\ContainerBuilder;
+$container = new DependencyInjection\ContainerBuilder();
 $container->setParameter('path.root', __DIR__ . '/..');
 
 $loader = new DependencyInjection\Loader\YamlFileLoader($container, $locator);
@@ -42,7 +43,6 @@ try {
     $parameters = $matcher->match($request->getPathInfo());
 } catch (Routing\Exception\ResourceNotFoundException $e) {
     // handle unsupported API endpoint
-    var_dump($e); exit;
 }
 
 // dumping the routed values with other request parameters .. because lazy

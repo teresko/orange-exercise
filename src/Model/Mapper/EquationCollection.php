@@ -15,14 +15,14 @@ class EquationCollection
     }
 
 
-    public function fetch(Entity\EquationCollection $collection)
+    public function fetch(Entity\EquationCollection $collection): void
     {
-        $sql = "SELECT equationId AS id,
+        $sql = 'SELECT equationId AS id,
                        expression,
                        result
                   FROM Equations
               ORDER BY equationId DESC
-                 LIMIT 5";
+                 LIMIT 5';
 
         $statement = $this->connection->query($sql);
         $statement->setFetchMode(PDO::FETCH_ASSOC);

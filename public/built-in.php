@@ -13,7 +13,7 @@ if ($uri === '/') {
 // if file actually exists, show the file instead of executing PHP
 if (file_exists(__DIR__ . $uri) && is_file(__DIR__ . $uri)) {
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $type =  finfo_file($finfo, __DIR__ . $uri);
+    $type = finfo_file($finfo, __DIR__ . $uri);
     finfo_close($finfo);
 
     // force CSS files to have correct mime type

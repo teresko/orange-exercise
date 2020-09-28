@@ -29,7 +29,7 @@ abstract class Collection implements \Iterator, \Countable
 
 
     /** code that does the actual population of data from the given array in blueprint */
-    protected function populateEntity(HasId $instance, array $parameters)
+    protected function populateEntity(HasId $instance, array $parameters): void
     {
         foreach ($parameters as $key => $value) {
             $method = 'set' . str_replace('_', '', $key);
@@ -39,7 +39,7 @@ abstract class Collection implements \Iterator, \Countable
         }
     }
 
-    public function addEntity(HasId $entity)
+    public function addEntity(HasId $entity): void
     {
         $id = $entity->getId();
         $this->pool[] = $entity;
@@ -54,7 +54,7 @@ abstract class Collection implements \Iterator, \Countable
     }
 
     // implementing Iterator
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -69,7 +69,7 @@ abstract class Collection implements \Iterator, \Countable
         return $this->position;
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }

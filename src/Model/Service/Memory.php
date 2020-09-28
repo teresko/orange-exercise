@@ -3,6 +3,7 @@
 namespace Model\Service;
 
 use Model\Entity;
+use Model\Exception;
 use Model\Mapper;
 
 class Memory
@@ -17,7 +18,7 @@ class Memory
     }
 
 
-    public function remember(Entity\Equation $equation)
+    public function remember(Entity\Equation $equation): void
     {
         $this->resourceMapper->store($equation);
     }
@@ -25,7 +26,7 @@ class Memory
 
     public function recallAll(): Entity\EquationCollection
     {
-        $collection = new Entity\EquationCollection;
+        $collection = new Entity\EquationCollection();
         $this->collectionMapper->fetch($collection);
 
         return $collection;
@@ -34,9 +35,14 @@ class Memory
 
     public function recall(int $id): Entity\Equation
     {
-        $equation = new Entity\Equation;
+        $equation = new Entity\Equation();
         $equation->setId($id);
-        $this->resourceMapper->fetch($equation);
+        try {
+            $this->resourceMapper->fetch($equation);
+        } catch (Exception\EntityNotFound $exception) {
+            // rethrow persistence level exception as domain level exception
+            throw new Exception\EquationNotFound();
+        }
 
         return $equation;
     }
