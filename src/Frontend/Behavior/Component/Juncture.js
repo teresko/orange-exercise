@@ -29,6 +29,11 @@ export default class Juncture {
     }
     this.input.value += fragment;
   }
+
+  clear () {
+    this.input.value = ''
+    this.log.textContent = '';
+  }
 }
 
 const is_numeric = function (char) {

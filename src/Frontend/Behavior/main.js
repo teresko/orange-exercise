@@ -26,6 +26,7 @@ const handle = function (data) {
 
 const restore = function (data) {
   data.items.slice().reverse().forEach(memory.add.bind(memory));
+  juncture.clear();
 }
 
 calculator.node.addEventListener('submit', function (event) {
