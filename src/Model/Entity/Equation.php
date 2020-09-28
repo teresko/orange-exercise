@@ -22,7 +22,7 @@ class Equation implements HasId, Computable
 
     private function isValid(string $expression): bool
     {
-        return preg_match('#^[+-]?\d+(([+/*-]|[/*][+-])\d+)+$#', $expression, $matches);
+        return preg_match('#^[+-]?\d+(\.\d+)?(([+/*-]|[/*][+-])\d+(\.\d+)?)+$#', $expression, $matches);
     }
 
 
@@ -72,7 +72,7 @@ class Equation implements HasId, Computable
     {
         $expression = $this->getExpression();
 
-        preg_match_all('#([+-/*])|(\d+)#', $expression, $matches);
+        preg_match_all('#([+-/*])|(\d+(?:\.\d+)?)#', $expression, $matches);
 
         $expression = implode(' ', $matches[0]);
 
