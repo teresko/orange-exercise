@@ -31,4 +31,16 @@ class CalculatorTest extends TestCase
         $instance->evaluate($double);
         $this->assertSame(2.8, $double->getRawResult());
     }
+
+
+    /**
+     * @test
+     */
+    public function Exception_when_Diviting_by_Zero()
+    {
+        $this->expectException(\DivisionByZeroError::class);
+        $instance = new Calculator;
+        $double = new Equation('9 / 0');
+        $instance->evaluate($double);
+    }
 }

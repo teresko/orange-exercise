@@ -11,7 +11,7 @@ require __DIR__ . '/functions.php';
 $environment = 'development';
 
 // choosing which set of configuration-set to use
-// basically, the "profiles" 
+// basically, the "profiles"
 if (getenv('DEPLOYMENY')) {
     $environment = getenv('DEPLOYMENY');
 }
@@ -57,7 +57,7 @@ try {
     $command = $request->getMethod() . $request->get('action');
 
     $data = $resource->{$command}($request) + ['status' => 'ok'];
-} catch (Exception $exception) {
+} catch (Throwable $exception) {
     $data = [
         'status' => 'error',
         'message' => $exception->getMessage(),
